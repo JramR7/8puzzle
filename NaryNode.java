@@ -1,13 +1,13 @@
 public class NaryNode{
 
-    Character[] state;
+    String state;
     NaryNode parent;
     String action;
     int depth;
     double cost;
     double key;
 
-    public NaryNode(Character[] state, NaryNode parent, String action, 
+    public NaryNode(String state, NaryNode parent, String action, 
                     int depth, double cost, double key) {
         
         this.state = state;
@@ -18,15 +18,15 @@ public class NaryNode{
         this.key = key;
     }
 
+    /* Test the NaryNode class
     public static void main(String[] args) {
-        Character[] state = {'1', '2', '3', '8', '0', '4', '7', '6', '5'};
+        String state = {"123804765"};
         NaryNode parent = null;
         String action = "up";
         int depth = 0;
         double cost = 0;
         double key = 0;
 
-        /* Test the NaryNode class
         NaryNode node = new NaryNode(state, parent, action, depth, cost, key);
         System.out.println("state:" + node.state);
         System.out.println("parent:" + node.parent);
