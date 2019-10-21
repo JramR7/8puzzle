@@ -1,3 +1,4 @@
+import java.util.*;
 public class NaryNode{
 
     String state;
@@ -6,9 +7,11 @@ public class NaryNode{
     int depth;
     double cost;
     double key;
+    double gn;
+    double hn;
 
     public NaryNode(String state, NaryNode parent, String action, 
-                    int depth, double cost, double key) {
+                    int depth, double cost, double key, double gn, double hn) {
         
         this.state = state;
         this.parent = parent;
@@ -16,6 +19,19 @@ public class NaryNode{
         this.depth = depth;
         this.cost = cost;
         this.key = key;
+        this.gn = gn;
+        this.hn = hn;
+    }
+
+    public ArrayList<String[]> getSolution(NaryNode finalNode) {
+        ArrayList<String[]> solution = new ArrayList<String[]>();
+    
+        while(finalNode.parent != null) {
+            String[] nodeAction = {finalNode.action, finalNode.state};
+            solution.add(nodeAction);
+            finalNode = finalNode.parent;
+        }
+        return solution;
     }
 
     /* Test the NaryNode class
