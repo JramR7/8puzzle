@@ -24,9 +24,13 @@ public class Solver {
         Problem p = new Problem(initialState, goalState, actions);
         Solver solver = new Solver();
         Astar astar = new Astar(p);
+        Bfs bfs = new Bfs(p);
+        Dfs dfs = new Dfs(p);
 
         long startTime = System.currentTimeMillis();
         ArrayList<String[]> solution = astar.search();
+        //ArrayList<String[]> solution = bfs.search();
+        //ArrayList<String[]> solution = dfs.search();
         long endTime = System.currentTimeMillis();
         long duration = (endTime - startTime);
         

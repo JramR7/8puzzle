@@ -8,14 +8,16 @@ public class Bfs {
         this.problem = problem;
     }
 
-    public String search() {
+    public ArrayList<String[]> search() {
         String initState = this.problem.initialState;
         NaryNode node = new NaryNode(initState, null, null, 0, 0, 0, 0, 0);
         Queue<NaryNode> frontier = new LinkedList<>(); 
         Set<String> explored = new HashSet<>(); 
+        ArrayList<String[]> solution = new ArrayList<String[]>();
 
         if (problem.testGoal(node.state)) {
-            return node.state;
+            solution = node.getSolution(node);
+            return solution;
         }
         frontier.add(node);
     
@@ -23,7 +25,6 @@ public class Bfs {
             node = frontier.remove();
             explored.add(node.state);
 
-            System.out.println(node.state);
             for (String action : problem.actions) {
                 String actionState = transition.runAction(node.state, action);
 
@@ -34,7 +35,8 @@ public class Bfs {
                         frontier.add(child);
 
                         if (problem.testGoal(child.state)) {
-                            return child.state;
+                            solution = child.getSolution(child);
+                            return solution;
                         }
                     }
                 }
